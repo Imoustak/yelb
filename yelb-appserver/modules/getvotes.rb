@@ -6,6 +6,6 @@ def getvotes()
         ihop = restaurantsdbread("ihop")
         bucadibeppo = restaurantsdbread("bucadibeppo")
         chipotle = restaurantsdbread("chipotle")
-        votes = '[{"name": "outback", "value": ' + outback + '},' + '{"name": "bucadibeppo", "value": ' + bucadibeppo + '},' + '{"name": "ihop", "value": '  + ihop + '}, ' + '{"name": "chipotle", "value": '  + chipotle + '}]'
+        votes = '[{"name": "egypt", "value": ' + outback + '},' + '{"name": "las vegas", "value": ' + bucadibeppo + '},' + '{"name": "switzerland", "value": '  + chipotle + '}, ' + '{"name": "maldives", "value": '  + ihop + '}]'
         return votes
 end
