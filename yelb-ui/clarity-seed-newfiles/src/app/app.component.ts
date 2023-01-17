@@ -39,10 +39,11 @@ colorScheme = {
 votes: any[] = [];
 stats: any;
 hostname: any;
+offers: any;
 pageviews: any;
 gradient: boolean;
 view: any[] = [700, 200];
-ngOnInit(){this.getvotes(); this.getstats()}
+ngOnInit(){this.getvotes(); this.getstats(); this.getoffers() }
 
 getvotes(): void {
     const url = `${this.appserver}/api/getvotes`;
@@ -67,5 +68,13 @@ vote(restaurant: string): void {
                 .map((res: Response) => res.json())
                 .subscribe(res => {console.log(res)});    
     this.getvotes()
+    }
+    
+getoffers(): void {
+    const url = `${this.appserver}/api/getoffers`;
+    console.log("getting latest offers " + url);
+    this.http.get(url)
+                .map((res: Response) => res.json())
+                .subscribe(res => {console.log(res.offers); this.offers = res})
     }
 }
