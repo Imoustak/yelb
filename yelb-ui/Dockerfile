@@ -1,4 +1,4 @@
-FROM node:12.22
+FROM --platform=linux/amd64 node:12.22
 MAINTAINER massimo@it20.info
 
 WORKDIR /
@@ -33,7 +33,7 @@ RUN ng build --environment=test --output-path=./test/dist/
 RUN ng build --environment=dev --output-path=./dev/dist/
 
 
-FROM nginx:1.17.10
+FROM --platform=linux/amd64 nginx:1.17.10
 MAINTAINER massimo@it20.info
 
 WORKDIR /

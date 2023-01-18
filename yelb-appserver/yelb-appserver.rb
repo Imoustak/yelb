@@ -18,6 +18,7 @@ require_relative 'modules/hostname'
 require_relative 'modules/getstats'
 require_relative 'modules/restaurantsdbupdate'
 require_relative 'modules/restaurantsdbread'
+require_relative 'modules/getoffers'
 
 # the disabled protection is required when running in production behind an nginx reverse proxy
 # without this option, the angular application will spit a `forbidden` error message
@@ -29,9 +30,11 @@ disable :protection
 # there is no expectations to be able to use DDB for test/dev 
  
 configure :production do
-  set :redishost, "redis-server"
+  #set :redishost, "yelb-redis.yelb.cloudmap.internal"
+  set :redishost, "redis-page-views.ojtfc7.ng.0001.usw2.cache.amazonaws.com"
   set :port, 4567
-  set :yelbdbhost => "yelb-db"
+  #set :yelbdbhost => "yelb-db.yelb.cloudmap.internal"
+  set :yelbdbhost => "yelb-db.cluster-cltmk7euasus.us-west-2.rds.amazonaws.com"
   set :yelbdbport => 5432
   set :yelbddbrestaurants => ENV['YELB_DDB_RESTAURANTS']
   set :yelbddbcache => ENV['YELB_DDB_CACHE']
@@ -142,3 +145,10 @@ get '/api/bucadibeppo' do
     headers 'Access-Control-Allow-Methods' => 'GET,POST,PUT,DELETE,OPTIONS' 
     @bucadibeppo = restaurantsupdate("bucadibeppo")
 end #get /api/bucadibeppo 
+
+get '/api/getoffers' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    headers 'Access-Control-Allow-Headers' => 'Authorization,Accepts,Content-Type,X-CSRF-Token,X-Requested-With'
+    headers 'Access-Control-Allow-Methods' => 'GET,POST,PUT,DELETE,OPTIONS' 
+    @offers = getoffers()
+end #get /api/getoffers

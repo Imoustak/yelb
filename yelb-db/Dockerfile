@@ -1,4 +1,4 @@
-FROM postgres:10.21
+FROM --platform=linux/amd64 postgres:10.21
 MAINTAINER massimo@it20.info
 
 WORKDIR /

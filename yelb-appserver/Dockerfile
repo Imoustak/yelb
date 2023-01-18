@@ -1,4 +1,4 @@
-FROM bitnami/ruby:2.7.4
+FROM --platform=linux/amd64 bitnami/ruby:2.7.4
 MAINTAINER massimo@it20.info
 
 ################## BEGIN INSTALLATION ######################
